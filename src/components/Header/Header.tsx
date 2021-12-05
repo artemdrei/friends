@@ -1,13 +1,17 @@
 import React from "react";
+import styled from "styled-components";
 
-import AppBar from "@mui/material/AppBar";
-import { Button, Container, Toolbar, Typography } from "@mui/material";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
+
+const ContainerStyled = styled(Container)`
+  padding: 0;
+`;
 
 const Header: React.FC = () => {
   return (
-    <AppBar>
-      <Container maxWidth="lg">
+    <AppBar position="relative">
+      <ContainerStyled maxWidth="md">
         <Toolbar>
           <Typography
             variant="h6"
@@ -29,7 +33,7 @@ const Header: React.FC = () => {
             Cards
           </Button>
         </Toolbar>
-      </Container>
+      </ContainerStyled>
     </AppBar>
   );
 };
