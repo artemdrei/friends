@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { shuffleArray } from "../../utils/shuffleArray";
+import { useCardsTransform } from "./useCardsTransform";
+
+import Card from "../../components/Card/Card";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import Card from "../../components/Card/Card";
-
-import { shuffleArray } from "../../utils/shuffleArray";
 
 const FieldStyled = styled.div`
   position: relative;
@@ -47,7 +48,7 @@ const ButtonNextStyled = styled(Button)`
   }
 `;
 
-const deck = ["one", "two", "tree", "four", "five"];
+const deck = ["one", "two", "tree", "four", "five"] as any[];
 const deckShuffled = shuffleArray([...deck]);
 
 export const Field: React.FC = () => {
@@ -56,9 +57,7 @@ export const Field: React.FC = () => {
 
   const [deckCards, setDeckCards] = useState(otherCards);
   const [fieldCards, setFieldCards] = useState(initialCard);
-
-  console.log("deckCards", deckCards);
-  console.log("fieldCards", fieldCards);
+  const { cardsTransform } = useCardsTransform(deck);
 
   const updateDecks = (type: "NEXT" | "PREV", from: string[], to: string[]) => {
     const lastCard = from[from.length - 1];
@@ -99,8 +98,12 @@ export const Field: React.FC = () => {
         <ArrowForwardIosIcon />
       </ButtonNextStyled>
 
-      {fieldCards.map((item) => {
-        return <Card key={item}>{item}</Card>;
+      {fieldCards.map((item, index) => {
+        return (
+          <Card key={item} transform={cardsTransform[index]}>
+            {item}
+          </Card>
+        );
       })}
     </FieldStyled>
   );
