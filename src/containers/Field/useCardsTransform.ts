@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Deck } from "../../typings";
 import { getRandomInt } from "../../utils/getRandomInt";
 
-export const useCardsTransform = (deck: Deck[]) => {
+export const useCardsTransform = (deck: Deck) => {
   const [cardsTransform, setCardsTransform] = useState<string[]>([]);
 
   useEffect(() => {

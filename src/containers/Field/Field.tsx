@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import styled from "styled-components";
 
-import { shuffleArray } from "../../utils/shuffleArray";
+import { Deck } from "../../typings";
+import { Props } from "./types";
 import { useCardsTransform } from "./useCardsTransform";
 
 import Card from "../../components/Card/Card";
@@ -48,18 +49,15 @@ const ButtonNextStyled = styled(Button)`
   }
 `;
 
-const deck = ["one", "two", "tree", "four", "five"] as any[];
-const deckShuffled = shuffleArray([...deck]);
-
-export const Field: React.FC = () => {
-  const initialCard = [deckShuffled[deckShuffled.length - 1]];
-  const otherCards = deckShuffled.slice(0, -1); // slice last card
+export const Field: React.FC<Props> = ({ deck }) => {
+  const initialCard = [deck[deck.length - 1]];
+  const otherCards = deck.slice(0, -1); // slice last card
 
   const [deckCards, setDeckCards] = useState(otherCards);
   const [fieldCards, setFieldCards] = useState(initialCard);
   const { cardsTransform } = useCardsTransform(deck);
 
-  const updateDecks = (type: "NEXT" | "PREV", from: string[], to: string[]) => {
+  const updateDecks = (type: "NEXT" | "PREV", from: Deck, to: Deck) => {
     const lastCard = from[from.length - 1];
 
     if (!lastCard) return;
@@ -109,4 +107,4 @@ export const Field: React.FC = () => {
   );
 };
 
-export default Field;
+export default memo(Field);

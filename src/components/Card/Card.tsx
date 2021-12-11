@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 
 import { Props } from "./types";
@@ -39,4 +39,4 @@ export const Card: React.FC<Props> = ({ children, transform }) => {
   );
 };
 
-export default Card;
+export default memo(Card);
