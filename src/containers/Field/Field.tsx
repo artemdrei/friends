@@ -86,13 +86,24 @@ export const Field: React.FC<Props> = ({ deck }) => {
     updateDecks("PREV", fieldCards, deckCards);
   };
 
+  const isPrevDisabled = fieldCards.length === 0;
+  const isNextDisabled = deckCards.length === 0;
+
   return (
     <FieldStyled>
-      <ButtonPrevStyled disableRipple onClick={onPrevCard}>
+      <ButtonPrevStyled
+        onClick={onPrevCard}
+        disabled={isPrevDisabled}
+        disableRipple
+      >
         <ArrowForwardIosIcon />
       </ButtonPrevStyled>
 
-      <ButtonNextStyled disableRipple onClick={onNextCard}>
+      <ButtonNextStyled
+        onClick={onNextCard}
+        disabled={isNextDisabled}
+        disableRipple
+      >
         <ArrowForwardIosIcon />
       </ButtonNextStyled>
 
