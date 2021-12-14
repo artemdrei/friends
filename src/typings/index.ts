@@ -1,7 +1,7 @@
-export type Language = "en" | "ru";
+export type Language = "En" | "Ru";
 
 export type Deck = string[];
 
-export type DeckLevel = "one" | "two" | "tree";
+export type DeckLevel = "One" | "Two" | "Tree";
 
-export type DeckVariant = "main" | "honestDating";
+export type DeckVariant = "Main" | "Dating";

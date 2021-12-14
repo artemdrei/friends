@@ -1,5 +1,5 @@
 import { decks } from "./decks";
 
-export const ru = {
+export const Ru = {
   decks,
 };

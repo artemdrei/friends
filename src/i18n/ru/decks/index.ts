@@ -1,7 +1,7 @@
-import { main } from "./main";
-import { honestDating } from "./honestDating";
+import { Main } from "./main";
+import { Dating } from "./dating";
 
 export const decks = {
-  main,
-  honestDating,
+  Main,
+  Dating,
 };

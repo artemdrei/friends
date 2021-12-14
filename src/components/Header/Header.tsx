@@ -15,16 +15,16 @@ import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt
 
 import { labels } from "../../i18n";
 
-console.log(labels.en);
+console.log(labels.En);
 
 const ContainerStyled = styled(Container)`
   padding: 0;
 `;
 
 const Header: React.FC<Props> = ({
-  language = "en",
-  deckLevel = "one",
-  deckVariant = "main",
+  language,
+  deckLevel,
+  deckVariant,
   setLanguage,
   setDeckLevel,
   setDeckVariant,
@@ -36,11 +36,9 @@ const Header: React.FC<Props> = ({
   };
 
   const label = labels[language].decks;
-  const languagesOptions = Object.keys(labels).map((language) => language);
-  const variantOptions = Object.keys(label).map((variant) => variant);
   const levelOptions = Object.keys(label[deckVariant]).map((key) => key);
-
-  console.log("levels", levelOptions);
+  const variantOptions = Object.keys(label).map((variant) => variant);
+  const languagesOptions = Object.keys(labels).map((language) => language);
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;

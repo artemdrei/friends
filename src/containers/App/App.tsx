@@ -12,9 +12,9 @@ import Header from "../../components/Header/Header";
 import { labels } from "../../i18n";
 
 const App: React.FC = () => {
-  const [language, setLanguage] = useState<Language>("en");
-  const [deckLevel, setDeckLevel] = useState<DeckLevel>("one");
-  const [deckVariant, setDeckVariant] = useState<DeckVariant>("main");
+  const [language, setLanguage] = useState<Language>("Ru");
+  const [deckLevel, setDeckLevel] = useState<DeckLevel>("One");
+  const [deckVariant, setDeckVariant] = useState<DeckVariant>("Main");
 
   const deck = labels[language].decks[deckVariant][deckLevel];
   const deckShuffled = shuffleArray([...deck]);
