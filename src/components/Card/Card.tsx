@@ -11,7 +11,7 @@ const CardStyled = styled.div<{ transform: string }>`
   align-items: center;
   width: 100%;
   max-width: 480px;
-  height: 330px;
+  min-height: 270px;
   padding: 12px 24px;
   border-radius: 60px;
   font-size: 16px;

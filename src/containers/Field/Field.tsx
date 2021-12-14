@@ -15,7 +15,6 @@ const FieldStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
-  border: 1px solid red;
 `;
 
 const ButtonPrevStyled = styled(Button)`
