@@ -23,7 +23,6 @@ const ButtonPrevStyled = styled(Button)`
   height: 100%;
   padding-right: 20px;
   width: 50%;
-  z-index: 1;
 
   svg {
     position: absolute;
@@ -39,7 +38,6 @@ const ButtonNextStyled = styled(Button)`
   height: 100%;
   padding-right: 20px;
   width: 50%;
-  z-index: 1;
 
   svg {
     position: absolute;
@@ -97,19 +95,11 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
 
   return (
     <FieldStyled>
-      <ButtonPrevStyled
-        onClick={onPrevCard}
-        disabled={isPrevDisabled}
-        disableRipple
-      >
+      <ButtonPrevStyled onClick={onPrevCard} disabled={isPrevDisabled}>
         <ArrowForwardIosIcon />
       </ButtonPrevStyled>
 
-      <ButtonNextStyled
-        onClick={onNextCard}
-        disabled={isNextDisabled}
-        disableRipple
-      >
+      <ButtonNextStyled onClick={onNextCard} disabled={isNextDisabled}>
         <ArrowForwardIosIcon />
       </ButtonNextStyled>
 

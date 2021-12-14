@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Props } from "./types";
+import { DeckLevel, DeckVariant, Language } from "../../typings";
 
 import AppBar from "@mui/material/AppBar";
 import Select from "@mui/material/Select";
@@ -11,13 +12,19 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import { ReactComponent as LogoIcon } from "../../assets/svg/friends.svg";
 
 import { labels } from "../../i18n";
-import { DeckLevel, DeckVariant, Language } from "../../typings";
 
 const ContainerStyled = styled(Container)`
   padding: 0;
+`;
+
+const LogoIconStyled = styled(LogoIcon)`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 const Header: React.FC<Props> = ({
@@ -76,9 +83,7 @@ const Header: React.FC<Props> = ({
             component="div"
             sx={{ flexGrow: 1, display: "flex" }}
           >
-            <SentimentSatisfiedAltIcon
-              style={{ width: "32px", height: "32px" }}
-            />
+            <LogoIconStyled />
           </Typography>
 
           <FormControl sx={{ m: 1, width: 120 }}>
