@@ -31,10 +31,10 @@ const TextStyled = styled.div`
   text-align: center;
 `;
 
-export const Card: React.FC<Props> = ({ children, transform }) => {
+export const Card: React.FC<Props> = ({ text, transform }) => {
   return (
     <CardStyled transform={transform}>
-      <TextStyled>{children}</TextStyled>
+      <TextStyled>{text}</TextStyled>
     </CardStyled>
   );
 };

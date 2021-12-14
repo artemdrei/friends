@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 
+import { DeckLevel, DeckVariant, Language } from "../../typings";
 import { shuffleArray } from "../../utils/shuffleArray";
 
 import Box from "@mui/material/Box";
@@ -11,16 +12,31 @@ import Header from "../../components/Header/Header";
 import { labels } from "../../i18n";
 
 const App: React.FC = () => {
-  const deck = labels.en.decks.honestDating.one;
+  const [language, setLanguage] = useState<Language>("en");
+  const [deckLevel, setDeckLevel] = useState<DeckLevel>("one");
+  const [deckVariant, setDeckVariant] = useState<DeckVariant>("main");
+
+  const deck = labels[language].decks[deckVariant][deckLevel];
   const deckShuffled = shuffleArray([...deck]);
 
   return (
     <>
       <CssBaseline />
       <Box sx={{ flexGrow: 1, height: "100vh" }}>
-        <Header />
+        <Header
+          language={language}
+          deckLevel={deckLevel}
+          deckVariant={deckVariant}
+          setLanguage={setLanguage}
+          setDeckLevel={setDeckLevel}
+          setDeckVariant={setDeckVariant}
+        />
         <Body>
-          <Field deck={deckShuffled} />
+          <Field
+            deck={deckShuffled}
+            deckLevel={deckLevel}
+            language={language}
+          />
         </Body>
       </Box>
     </>

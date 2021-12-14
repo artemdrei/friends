@@ -1,57 +1,67 @@
 import React from "react";
 import styled from "styled-components";
 
-import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
-import { AppBar, Button, Container, Toolbar, Typography } from "@mui/material";
+import { Props } from "./types";
 
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
+import AppBar from "@mui/material/AppBar";
+import Select from "@mui/material/Select";
+import Toolbar from "@mui/material/Toolbar";
 import MenuItem from "@mui/material/MenuItem";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Checkbox from "@mui/material/Checkbox";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+import { labels } from "../../i18n";
+
+console.log(labels.en);
 
 const ContainerStyled = styled(Container)`
   padding: 0;
 `;
 
-const Header: React.FC = () => {
-  const [personName, setPersonName] = React.useState<string[]>([]);
-
-  const handleChange = (event: SelectChangeEvent<typeof personName>) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a the stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+const Header: React.FC<Props> = ({
+  language = "en",
+  deckLevel = "one",
+  deckVariant = "main",
+  setLanguage,
+  setDeckLevel,
+  setDeckVariant,
+}) => {
+  const ID = {
+    LANGUAGE: "language",
+    DECK_LEVEL: "deckLevel",
+    DECK_VARIANT: "deckVariant",
   };
 
-  const names = [
-    "Oliver Hansen",
-    "Van Henry",
-    "April Tucker",
-    "Ralph Hubbard",
-    "Omar Alexander",
-    "Carlos Abbott",
-    "Miriam Wagner",
-    "Bradley Wilkerson",
-    "Virginia Andrews",
-    "Kelly Snyder",
-  ];
+  const label = labels[language].decks;
+  const languagesOptions = Object.keys(labels).map((language) => language);
+  const variantOptions = Object.keys(label).map((variant) => variant);
+  const levelOptions = Object.keys(label[deckVariant]).map((key) => key);
+
+  console.log("levels", levelOptions);
+
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case ID.LANGUAGE:
+        setLanguage(value);
+
+        break;
+
+      case ID.DECK_LEVEL:
+        setDeckLevel(value);
+
+        break;
+
+      case ID.DECK_VARIANT:
+        setDeckVariant(value);
+
+        break;
+    }
+  };
 
   return (
     <AppBar position="relative">
@@ -66,32 +76,46 @@ const Header: React.FC = () => {
               style={{ width: "32px", height: "32px" }}
             />
           </Typography>
-          <Button color="inherit" variant="outlined">
-            Level
-          </Button>
-          {/* <Button
-            color="inherit"
-            variant="outlined"
-            style={{ marginLeft: "16px" }}
-          >
-            Cards
-          </Button> */}
 
-          <FormControl sx={{ m: 1, width: 300 }}>
-            <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+          <FormControl sx={{ m: 1, width: 120 }}>
             <Select
-              labelId="demo-multiple-checkbox-label"
-              id="demo-multiple-checkbox"
-              multiple
-              value={personName}
+              name={ID.DECK_VARIANT}
+              value={deckVariant}
               onChange={handleChange}
-              input={<OutlinedInput label="Tag" />}
-              renderValue={(selected) => selected.join(", ")}
-              MenuProps={MenuProps}
+              renderValue={(selected) => selected}
             >
-              {names.map((name) => (
+              {variantOptions.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <Checkbox checked={personName.indexOf(name) > -1} />
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ m: 1, width: 80 }}>
+            <Select
+              name={ID.DECK_LEVEL}
+              value={deckLevel}
+              onChange={handleChange}
+              renderValue={(selected) => selected}
+            >
+              {levelOptions.map((name) => (
+                <MenuItem key={name} value={name}>
+                  <ListItemText primary={name} />
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <FormControl sx={{ m: 1, width: 80 }}>
+            <Select
+              name={ID.LANGUAGE}
+              value={language}
+              onChange={handleChange}
+              renderValue={(selected) => selected}
+            >
+              {languagesOptions.map((name) => (
+                <MenuItem key={name} value={name}>
                   <ListItemText primary={name} />
                 </MenuItem>
               ))}

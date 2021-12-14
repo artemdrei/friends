@@ -1,6 +1,4 @@
-import React from "react";
-
 export interface Props {
-  children: React.ReactNode;
+  text: string;
   transform: string;
 }

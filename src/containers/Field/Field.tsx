@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo, useEffect } from "react";
 import styled from "styled-components";
 
 import { Deck } from "../../typings";
@@ -49,13 +49,18 @@ const ButtonNextStyled = styled(Button)`
   }
 `;
 
-export const Field: React.FC<Props> = ({ deck }) => {
+export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
   const initialCard = [deck[deck.length - 1]];
   const otherCards = deck.slice(0, -1); // slice last card
 
+  const { cardsTransform } = useCardsTransform(deck);
   const [deckCards, setDeckCards] = useState(otherCards);
   const [fieldCards, setFieldCards] = useState(initialCard);
-  const { cardsTransform } = useCardsTransform(deck);
+
+  useEffect(() => {
+    setDeckCards(otherCards);
+    setFieldCards(initialCard);
+  }, [deck, deckLevel, language]);
 
   const updateDecks = (type: "NEXT" | "PREV", from: Deck, to: Deck) => {
     const lastCard = from[from.length - 1];
@@ -107,11 +112,13 @@ export const Field: React.FC<Props> = ({ deck }) => {
         <ArrowForwardIosIcon />
       </ButtonNextStyled>
 
-      {fieldCards.map((item, index) => {
+      {fieldCards.map((text, index) => {
         return (
-          <Card key={item} transform={cardsTransform[index]}>
-            {item}
-          </Card>
+          <Card
+            key={"card_" + index}
+            text={text}
+            transform={cardsTransform[index]}
+          />
         );
       })}
     </FieldStyled>
