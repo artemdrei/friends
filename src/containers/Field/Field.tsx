@@ -87,6 +87,8 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
   };
 
   const onPrevCard = () => {
+    if (fieldCards.length === 1) return;
+
     updateDecks("PREV", fieldCards, deckCards);
   };
 
