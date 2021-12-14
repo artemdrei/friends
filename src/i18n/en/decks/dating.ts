@@ -1,4 +1,4 @@
-const One = [
+const one = [
   "Just by looking at me, what would you think I do for a living?",
   "What do you think my type is? Describe in detail.",
   "What do you think my drink of choice is?",
@@ -10,7 +10,7 @@ const One = [
   "Wild Card Write down your 3 favorite physical features of your partner and read them out loud. Both players.",
 ];
 
-const Two = [
+const two = [
   "What are you feeling a lot lately?",
   "Do you have any unconventional opinions when it comes to romantic relationships?",
   "I know I really like someone when _________.",
@@ -45,7 +45,7 @@ const Two = [
   "Wild Card Think of the most underrated show streaming currently. On the count of 3, say your answers out loud. Both players.",
 ];
 
-const Tree = [
+const tree = [
   "What song should I listen to on my way home?",
   "Based on what you've learned about me, what do you think I'm looking for romantically?",
   'On a scale of 1-10 how "Emotionally available" do I seem? Explain.',
@@ -60,8 +60,8 @@ const Tree = [
   "Wild Card Ask literally anything. Permission to go there.",
 ];
 
-export const Dating = {
-  One,
-  Two,
-  Tree,
+export const dating = {
+  one,
+  two,
+  tree,
 };

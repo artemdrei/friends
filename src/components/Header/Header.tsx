@@ -14,8 +14,7 @@ import ListItemText from "@mui/material/ListItemText";
 import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
 
 import { labels } from "../../i18n";
-
-console.log(labels.En);
+import { DeckLevel, DeckVariant, Language } from "../../typings";
 
 const ContainerStyled = styled(Container)`
   padding: 0;
@@ -36,9 +35,16 @@ const Header: React.FC<Props> = ({
   };
 
   const label = labels[language].decks;
-  const levelOptions = Object.keys(label[deckVariant]).map((key) => key);
-  const variantOptions = Object.keys(label).map((variant) => variant);
-  const languagesOptions = Object.keys(labels).map((language) => language);
+  const labelCommon = labels[language].common;
+  const levelOptions = Object.keys(label[deckVariant]).map(
+    (variant) => variant
+  ) as DeckLevel[];
+  const variantOptions = Object.keys(label).map(
+    (deck) => deck
+  ) as DeckVariant[];
+  const languagesOptions = Object.keys(labels).map(
+    (language) => language
+  ) as Language[];
 
   const handleChange = (event: any) => {
     const { name, value } = event.target;
@@ -84,7 +90,7 @@ const Header: React.FC<Props> = ({
             >
               {variantOptions.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <ListItemText primary={name} />
+                  <ListItemText primary={labelCommon.decks[name]} />
                 </MenuItem>
               ))}
             </Select>
@@ -99,7 +105,7 @@ const Header: React.FC<Props> = ({
             >
               {levelOptions.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <ListItemText primary={name} />
+                  <ListItemText primary={labelCommon.levels[name]} />
                 </MenuItem>
               ))}
             </Select>
@@ -114,7 +120,7 @@ const Header: React.FC<Props> = ({
             >
               {languagesOptions.map((name) => (
                 <MenuItem key={name} value={name}>
-                  <ListItemText primary={name} />
+                  <ListItemText primary={labelCommon.languages[name]} />
                 </MenuItem>
               ))}
             </Select>

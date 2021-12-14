@@ -1,5 +1,7 @@
 import { decks } from "./decks";
+import { common } from "./common";
 
-export const En = {
+export const en = {
   decks,
+  common,
 };

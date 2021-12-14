@@ -1,4 +1,4 @@
-const One = [
+const one = [
   "What was your first impression of me?",
   "What do you think is the hardest part of what I do for a living?",
   "What reality show do you think I'm most likely to binge watch? Explain.",
@@ -50,7 +50,7 @@ const One = [
   "Wild Card Make an assumption about me. (Both players)",
 ];
 
-export const Two = [
+export const two = [
   "How can you become a better person?",
   "What's your mother's name? And the most beautiful thing about her?",
   "If you could get to know someone in your life on a deeper level, who would it be and why?",
@@ -105,7 +105,7 @@ export const Two = [
   "Wild Card Press shuffle on your music library. Explain the first song that comes up!",
 ];
 
-const Tree = [
+const tree = [
   "How would you describe me to a stranger?",
   "What about me most surprised you?",
   "What would be the perfect gift for me?",
@@ -158,8 +158,8 @@ const Tree = [
   "Wild Card Both players write a note to your younger selves. (1 minute) Option to compare.",
 ];
 
-export const Main = {
-  One,
-  Two,
-  Tree,
+export const main = {
+  one,
+  two,
+  tree,
 };

@@ -1,7 +1,7 @@
-import { En } from "./en/en";
-import { Ru } from "./ru/ru";
+import { en } from "./en/en";
+import { ru } from "./ru/ru";
 
 export const labels = {
-  En,
-  Ru,
+  en,
+  ru,
 };
