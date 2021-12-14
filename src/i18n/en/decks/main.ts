@@ -1,5 +1,4 @@
 const one = [
-  // 49 cards
   "What was your first impression of me?",
   "What do you think is the hardest part of what I do for a living?",
   "What reality show do you think I'm most likely to binge watch? Explain.",
@@ -37,6 +36,7 @@ const one = [
   "What about me is most strange or unfamiliar to you?",
   "What about me intrigues you?",
   "If Myspace were still a thing what would my profile song be?",
+
   "Wild Card Maintain eye contact for thirty seconds. What did you notice?",
   "Wild Card Close your eyes. What color is my shirt?",
   "Wild Card Ask and answer the next question in a different accent. (Both players)",
@@ -48,11 +48,9 @@ const one = [
   "Wild Card Rate your dancing skills on a scale of 1-10. On the count of three, say your answers out loud! (Both players)",
   "Wild Card Close your eyes. What color are my eyes?",
   "Wild Card Make an assumption about me. (Both players)",
-  "Reminder Let go of your attachment to the outcome.",
 ];
 
 export const two = [
-  // 52 cards
   "How can you become a better person?",
   "What's your mother's name? And the most beautiful thing about her?",
   "If you could get to know someone in your life on a deeper level, who would it be and why?",
@@ -105,11 +103,9 @@ export const two = [
   "Wild Card Both players write an embarrassing fun fact about yourselves. Play a game of rock, paper, scissors. Loser must reveal!",
   "Wild Card Both players write the most important things in life to you. (30 seconds) Compare.",
   "Wild Card Press shuffle on your music library. Explain the first song that comes up!",
-  "Reminder Be more interested in understanding others than being understood.",
 ];
 
 const tree = [
-  // 49 cards
   "How would you describe me to a stranger?",
   "What about me most surprised you?",
   "What would be the perfect gift for me?",

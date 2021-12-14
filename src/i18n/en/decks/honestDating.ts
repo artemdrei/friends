@@ -1,5 +1,4 @@
 const one = [
-  // 8 cards
   "Just by looking at me, what would you think I do for a living?",
   "What do you think my type is? Describe in detail.",
   "What do you think my drink of choice is?",
@@ -12,7 +11,6 @@ const one = [
 ];
 
 const two = [
-  // 31 cards
   "What are you feeling a lot lately?",
   "Do you have any unconventional opinions when it comes to romantic relationships?",
   "I know I really like someone when _________.",
@@ -48,7 +46,6 @@ const two = [
 ];
 
 const tree = [
-  // 11 cards
   "What song should I listen to on my way home?",
   "Based on what you've learned about me, what do you think I'm looking for romantically?",
   'On a scale of 1-10 how "Emotionally available" do I seem? Explain.',
