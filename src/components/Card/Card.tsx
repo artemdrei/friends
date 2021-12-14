@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Props } from "./types";
 
-const CardStyled = styled.div<{ transform: string }>`
+const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
   z-index: 1;
   position: absolute;
   display: flex;
@@ -19,8 +19,8 @@ const CardStyled = styled.div<{ transform: string }>`
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  color: #c10016;
-  background-color: #f6f6f6;
+  color: ${({ isWildCard }) => (isWildCard ? "#fff" : "#c10016")};
+  background-color: ${({ isWildCard }) => (isWildCard ? "#c10016" : "#f6f6f6")};
   transform: ${({ transform }) => transform};
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
     0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
@@ -32,9 +32,12 @@ const TextStyled = styled.div`
 `;
 
 export const Card: React.FC<Props> = ({ text, transform }) => {
+  const isWildCard = text.includes("Wild Card");
+  const content = isWildCard ? text.replace(/Wild Card/gi, "").trim() : text;
+
   return (
-    <CardStyled transform={transform}>
-      <TextStyled>{text}</TextStyled>
+    <CardStyled transform={transform} isWildCard={isWildCard}>
+      <TextStyled>{content}</TextStyled>
     </CardStyled>
   );
 };
