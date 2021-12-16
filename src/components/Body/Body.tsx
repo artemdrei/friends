@@ -4,9 +4,9 @@ import styled from "styled-components";
 import { Container } from "@mui/material";
 
 const ContainerStyled = styled(Container)`
-  height: calc(100vh - 64px);
   overflow-y: auto;
-  padding: 0;
+  height: 100%;
+  padding: 0 !important;
 `;
 
 const Body: React.FC = ({ children }) => {

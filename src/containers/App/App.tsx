@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
+import styled from "styled-components";
 
 import { DeckLevel, DeckVariant, Language } from "../../typings";
 import { shuffleArray } from "../../utils/shuffleArray";
 
-import Box from "@mui/material/Box";
 import Body from "../../components/Body/Body";
 import Field from "../Field/Field";
 import Header from "../../components/Header/Header";
+import ActionBar from "../../components/ActionBar/ActionBar";
 
 import { labels } from "../../i18n";
+
+const ContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: -webkit-fill-available;
+  height: 100vh;
+`;
 
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>("ru");
@@ -22,15 +30,9 @@ const App: React.FC = () => {
   return (
     <>
       <CssBaseline />
-      <Box sx={{ flexGrow: 1, height: "100vh" }}>
-        <Header
-          language={language}
-          deckLevel={deckLevel}
-          deckVariant={deckVariant}
-          setLanguage={setLanguage}
-          setDeckLevel={setDeckLevel}
-          setDeckVariant={setDeckVariant}
-        />
+      <ContainerStyled>
+        <Header language={language} setLanguage={setLanguage} />
+
         <Body>
           <Field
             deck={deckShuffled}
@@ -38,7 +40,15 @@ const App: React.FC = () => {
             language={language}
           />
         </Body>
-      </Box>
+
+        <ActionBar
+          language={language}
+          deckLevel={deckLevel}
+          deckVariant={deckVariant}
+          setDeckLevel={setDeckLevel}
+          setDeckVariant={setDeckVariant}
+        />
+      </ContainerStyled>
     </>
   );
 };
