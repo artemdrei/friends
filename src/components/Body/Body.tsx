@@ -5,6 +5,7 @@ import { Container } from "@mui/material";
 
 const ContainerStyled = styled(Container)`
   overflow-y: auto;
+  overflow-x: hidden;
   height: 100%;
   padding: 0 !important;
 `;

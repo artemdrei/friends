@@ -8,6 +8,7 @@ import AppBar from "@mui/material/AppBar";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Container from "@mui/material/Container";
+import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import { ReactComponent as LogoIcon } from "../../assets/svg/friends.svg";
@@ -62,15 +63,19 @@ const Header: React.FC<Props> = ({ language, setLanguage }) => {
       >
         <LogoIconStyled />
 
-        <FormControl sx={{ width: 90 }}>
+        <FormControl sx={{ width: 100, color: "#fff" }}>
+          <InputLabel id="language">{labelCommon.languages.title}</InputLabel>
+
           <Select
+            id="language"
             name={ID.LANGUAGE}
             value={language}
+            label={labelCommon.languages.title}
+            labelId="language"
             onChange={handleChange}
-            renderValue={(selected) => selected}
           >
             {languagesOptions.map((name) => (
-              <MenuItem key={name} value={name}>
+              <MenuItem key={labelCommon.languages[name]} value={name}>
                 <ListItemText primary={labelCommon.languages[name]} />
               </MenuItem>
             ))}

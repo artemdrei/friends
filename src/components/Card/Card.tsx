@@ -9,6 +9,7 @@ const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
   display: flex;
   text-align: center;
   align-items: center;
+  margin-top: -60px;
   width: calc(100% - 40px);
   max-width: 480px;
   min-height: 270px;

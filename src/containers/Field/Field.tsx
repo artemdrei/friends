@@ -8,6 +8,7 @@ import { useCardsTransform } from "./useCardsTransform";
 import Card from "../../components/Card/Card";
 import Button from "@mui/material/Button";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { labels } from "../../i18n";
 
 const FieldStyled = styled.div`
   position: relative;
@@ -15,6 +16,14 @@ const FieldStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+`;
+
+const FieldCardsCounter = styled.div`
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  color: #c10016;
 `;
 
 const ButtonPrevStyled = styled(Button)`
@@ -53,6 +62,9 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
   const { cardsTransform } = useCardsTransform(deck);
   const [deckCards, setDeckCards] = useState(otherCards);
   const [fieldCards, setFieldCards] = useState(initialCard);
+
+  const label = labels[language].decks;
+  const labelCommon = labels[language].common;
 
   useEffect(() => {
     setDeckCards(otherCards);
@@ -112,6 +124,10 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
           />
         );
       })}
+
+      <FieldCardsCounter>
+        <b>{fieldCards.length}</b> / <b>{deck.length}</b>
+      </FieldCardsCounter>
     </FieldStyled>
   );
 };
