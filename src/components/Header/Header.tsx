@@ -63,11 +63,11 @@ const Header: React.FC<Props> = ({ language, setLanguage }) => {
       >
         <LogoIconStyled />
 
-        <FormControl sx={{ width: 100, color: "#fff" }}>
+        <FormControl sx={{ width: 80 }}>
           <InputLabel id="language">{labelCommon.languages.title}</InputLabel>
 
           <Select
-            id="language"
+            style={{ height: "42px" }}
             name={ID.LANGUAGE}
             value={language}
             label={labelCommon.languages.title}

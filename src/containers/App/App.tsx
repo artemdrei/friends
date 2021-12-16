@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
 import { DeckLevel, DeckVariant, Language } from "../../typings";
 import { shuffleArray } from "../../utils/shuffleArray";
@@ -12,11 +12,17 @@ import ActionBar from "../../components/ActionBar/ActionBar";
 
 import { labels } from "../../i18n";
 
+const GlobalStyle = createGlobalStyle`
+  body, html, #root {
+    height: 100%;
+  }
+`;
+
 const ContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   min-height: -webkit-fill-available;
-  height: 100vh;
+  height: 100%;
 `;
 
 const App: React.FC = () => {
@@ -30,6 +36,7 @@ const App: React.FC = () => {
   return (
     <>
       <CssBaseline />
+      <GlobalStyle />
       <ContainerStyled>
         <Header language={language} setLanguage={setLanguage} />
 
