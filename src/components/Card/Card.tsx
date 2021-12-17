@@ -33,7 +33,7 @@ const TextStyled = styled.div`
 `;
 
 export const Card: React.FC<Props> = ({ text, transform }) => {
-  const isWildCard = text.includes("Wild Card");
+  const isWildCard = text?.includes("Wild Card");
   const content = isWildCard ? text.replace(/Wild Card/gi, "").trim() : text;
 
   return (

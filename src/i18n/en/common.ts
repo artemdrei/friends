@@ -2,6 +2,7 @@ export const common = {
   decks: {
     title: "Deck",
     main: "Main",
+    group: "In Group",
     dating: "Dating",
   },
 
