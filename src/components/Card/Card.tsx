@@ -1,20 +1,41 @@
 import React, { memo } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 import { Props } from "./types";
 
 import { labels } from "../../i18n";
 
-const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
+const slideDown = keyframes`
+  from {
+    opacity: 0;
+      transform: translate3d(0, -100%, 0);
+      visibility: hidden;
+    }
+
+    to {
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
+    }
+`;
+
+const CardWrapper = styled.div`
   z-index: 1;
+  position: absolute;
+  width: calc(100% - 40px);
+  max-width: 480px;
+  min-height: 270px;
+  margin-top: -80px;
+  animation: ${slideDown} 160ms ease-out;
+`;
+
+const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
   position: absolute;
   display: flex;
   text-align: center;
   align-items: center;
-  margin-top: -60px;
-  width: calc(100% - 40px);
-  max-width: 480px;
-  min-height: 270px;
+  width: 100%;
+  height: 100%;
   padding: 12px 24px;
   border-radius: 60px;
   font-size: 18px;
@@ -38,13 +59,15 @@ export const Card: React.FC<Props> = ({ text, language, transform }) => {
   const content = isWildCard ? text.replace(/Wild Card/gi, "").trim() : text;
 
   return (
-    <CardStyled transform={transform} isWildCard={isWildCard}>
-      {content ? (
-        <TextStyled>{content}</TextStyled>
-      ) : (
-        <TextStyled>{labels[language].common.decks.noTranslation}</TextStyled>
-      )}
-    </CardStyled>
+    <CardWrapper>
+      <CardStyled transform={transform} isWildCard={isWildCard}>
+        {content ? (
+          <TextStyled>{content}</TextStyled>
+        ) : (
+          <TextStyled>{labels[language].common.decks.noTranslation}</TextStyled>
+        )}
+      </CardStyled>
+    </CardWrapper>
   );
 };
 

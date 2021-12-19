@@ -103,14 +103,6 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
 
   return (
     <FieldStyled>
-      <ButtonPrevStyled onClick={onPrevCard} disabled={isPrevDisabled}>
-        <ArrowForwardIosIcon />
-      </ButtonPrevStyled>
-
-      <ButtonNextStyled onClick={onNextCard} disabled={isNextDisabled}>
-        <ArrowForwardIosIcon />
-      </ButtonNextStyled>
-
       {fieldCards.map((text, index) => {
         return (
           <Card
@@ -121,6 +113,14 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
           />
         );
       })}
+
+      <ButtonPrevStyled onClick={onPrevCard} disabled={isPrevDisabled}>
+        <ArrowForwardIosIcon />
+      </ButtonPrevStyled>
+
+      <ButtonNextStyled onClick={onNextCard} disabled={isNextDisabled}>
+        <ArrowForwardIosIcon />
+      </ButtonNextStyled>
 
       <FieldCardsCounter>
         <b>{fieldCards.length}</b> / <b>{deck.length}</b>
