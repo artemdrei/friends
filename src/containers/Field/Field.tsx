@@ -116,6 +116,7 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
           <Card
             key={"card_" + index}
             text={text}
+            language={language}
             transform={cardsTransform[index]}
           />
         );

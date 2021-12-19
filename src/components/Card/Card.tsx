@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 import { Props } from "./types";
 
+import { labels } from "../../i18n";
+
 const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
   z-index: 1;
   position: absolute;
@@ -15,11 +17,10 @@ const CardStyled = styled.div<{ transform: string; isWildCard: boolean }>`
   min-height: 270px;
   padding: 12px 24px;
   border-radius: 60px;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2;
   font-weight: 700;
   text-align: center;
-  text-transform: uppercase;
   color: ${({ isWildCard }) => (isWildCard ? "#fff" : "#c10016")};
   background-color: ${({ isWildCard }) => (isWildCard ? "#c10016" : "#f6f6f6")};
   transform: ${({ transform }) => transform};
@@ -32,13 +33,17 @@ const TextStyled = styled.div`
   text-align: center;
 `;
 
-export const Card: React.FC<Props> = ({ text, transform }) => {
+export const Card: React.FC<Props> = ({ text, language, transform }) => {
   const isWildCard = text?.includes("Wild Card");
   const content = isWildCard ? text.replace(/Wild Card/gi, "").trim() : text;
 
   return (
     <CardStyled transform={transform} isWildCard={isWildCard}>
-      <TextStyled>{content}</TextStyled>
+      {content ? (
+        <TextStyled>{content}</TextStyled>
+      ) : (
+        <TextStyled>{labels[language].common.decks.noTranslation}</TextStyled>
+      )}
     </CardStyled>
   );
 };

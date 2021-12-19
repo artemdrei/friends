@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -29,6 +29,10 @@ const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>("ru");
   const [deckLevel, setDeckLevel] = useState<DeckLevel>("one");
   const [deckVariant, setDeckVariant] = useState<DeckVariant>("main");
+
+  useEffect(() => {
+    setDeckLevel("one");
+  }, [language, deckVariant]);
 
   const deck = labels[language].decks[deckVariant][deckLevel];
   const deckShuffled = shuffleArray([...deck]);

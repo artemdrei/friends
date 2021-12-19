@@ -1,6 +1,7 @@
 export const common = {
   decks: {
     title: "Deck",
+    noTranslation: "Sorry, there is no translation for this deck:(",
     main: "Main",
     group: "In Group",
     dating: "Dating",
