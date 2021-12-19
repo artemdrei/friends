@@ -130,11 +130,19 @@ export const Field: React.FC<Props> = ({ deck, deckLevel, language }) => {
         );
       })}
 
-      <ButtonPrevStyled onClick={onPrevCard} disabled={isPrevDisabled}>
+      <ButtonPrevStyled
+        disableRipple
+        onClick={onPrevCard}
+        disabled={isPrevDisabled}
+      >
         <ArrowForwardIosIcon />
       </ButtonPrevStyled>
 
-      <ButtonNextStyled onClick={onNextCard} disabled={isNextDisabled}>
+      <ButtonNextStyled
+        disableRipple
+        onClick={onNextCard}
+        disabled={isNextDisabled}
+      >
         <ArrowForwardIosIcon />
       </ButtonNextStyled>
 
