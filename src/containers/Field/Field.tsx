@@ -15,6 +15,14 @@ const FieldStyled = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+
+  @media (max-width: 768px) {
+    button {
+      svg {
+        display: none;
+      }
+    }
+  }
 `;
 
 const FieldCardsCounter = styled.div`
@@ -33,7 +41,7 @@ const ButtonPrevStyled = styled(Button)`
   width: 50%;
 
   &:hover {
-    background-color: transparent;
+    background-color: transparent !important;
   }
 
   svg {
@@ -50,6 +58,10 @@ const ButtonNextStyled = styled(Button)`
   height: 100%;
   padding-right: 20px;
   width: 50%;
+
+  &:hover {
+    background-color: transparent !important;
+  }
 
   svg {
     position: absolute;
