@@ -32,6 +32,10 @@ const ButtonPrevStyled = styled(Button)`
   padding-right: 20px;
   width: 50%;
 
+  &:hover {
+    background-color: transparent;
+  }
+
   svg {
     position: absolute;
     left: 20px;

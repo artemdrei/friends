@@ -20,7 +20,6 @@ const slideDown = keyframes`
 `;
 
 const CardWrapper = styled.div`
-  z-index: 1;
   position: absolute;
   width: calc(100% - 40px);
   max-width: 480px;
