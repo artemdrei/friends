@@ -3,7 +3,7 @@ export const common = {
     title: "Колода",
     noTranslation: "К сожалению, у этой колоды нет перевода :(",
     main: "Основая",
-    group: "В Группе",
+    group: "В компании",
     dating: "Свидания",
   },
 
